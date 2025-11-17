@@ -72,24 +72,18 @@ int main() {
 		}
 
 	}
-
-	
-
-	
-}
-
-
-
-/*int main() {
-	float fahr, celsius;
-	for (fahr = 0.0; fahr <= 200; fahr = fahr + 20) {
-		celsius = FtoC(fahr);
-		cout << fahr << " " << celsius << endl;
+	if (wybor > 6 or wybor < 1) {
+		cout << "program zostaje wylączony " ;
+		return 0;
 	}
-	return 0; 
-		
+	
+
+	
 }
-*/
+
+
+
+
 float FtoC(float stopnie) {
 	float wynik = (5.0 / 9.0) * (stopnie - 32.0);
 	return wynik;
