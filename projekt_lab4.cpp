@@ -24,29 +24,52 @@ int main() {
 	switch(wybor) {
 	case 1:
 		cout << "Przeliczanie Fahr na Celsius: " << endl;
-		float fahr, celsius;
-		for (fahr = 0.0; fahr <= 200; fahr = fahr + 20) {
-			celsius = FtoC(fahr);
-			cout << fahr << " " << celsius << endl;
+		float x, y;//x - fahr, y- celsius
+		for (x = 0.0; x <= 200; x = x + 20) {
+			y = FtoC(x);
+			cout << x << " -> " << y << endl;
 		}
 		break;
 	case 2:
 		cout << "2-przelicz Fahr - > Kelwin: " << endl;
-		float fahr, kelw;
-		for (fahr = 0.0; fahr <= 200; fahr = fahr + 20) {
-			kelw = FtoK(fahr);
-			cout << kelw << " " << celsius << endl;
+		float a,b;//a- fahr, b-kelwin
+		for (a = 0.0; a <= 200; a = a + 20) {
+			b = FtoK(a);
+			cout << a << " -> " << b << endl;
 		}
 		break;
 	case 3:
 		cout << "przelicz Celsius -> Fahr: " << endl;
-		float celsius, fahr;
-		for (celsius = 0.0; celsius <= 200; celsius = celsius + 20) {
-			fahr = CtoF(celsius);
+		float c, d;//c-celsius, d-fahr
+		for (c = 0.0; c <= 200; c = c + 20) {
+			d = CtoF(c);
+			cout << c << " -> " << d << endl;
 		}
 		break;
 	case 4:
+		cout << "4- przelicz celsius -> kelwin: " << endl;
+		float e,f ;//e-celsius, f-kelw
+		for (e = 0.0; e <= 200; e = e + 20) {
+			f = CtoK(e);
+			cout << e << " ->" << f << endl;
+		}
+		break;
+	case 5:
+		cout << "5- przelicz Kelwin - > Celsius: " << endl;
+		float kelw, celsius;
+		for (kelw = 0.0; kelw <= 200; kelw = kelw + 20) {
+			celsius = KtoC(kelw);
+			cout << kelw << " -> " << celsius << endl;
 
+		}
+		break;
+	case 6:
+		cout << "6 - przelicz Kelwin->Fahr" << endl;
+		float g, fahr; //g-kelw
+		for (g = 0.0; g <= 200; g = g + 20) {
+			fahr = KtoF(g);
+			cout << g << " -> " << fahr << endl;
+		}
 
 	}
 
