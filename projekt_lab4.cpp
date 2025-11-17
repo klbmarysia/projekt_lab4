@@ -8,6 +8,9 @@ float CtoF(float x);
 float CtoK(float x);
 float KtoC(float x);
 float KtoF(float x);
+float pobierzF();
+float K();
+float C();
 void menu();
 void menu() {
 	cout << "1-przelicz Fahr -> Celsius " << endl << "2-przelicz Fahr - > Kelwin" << endl
@@ -15,6 +18,25 @@ void menu() {
 		<< "5- przelicz Kelwin - > Celsius " << endl << "6-przelicz Kelwin -> Fahr" << endl
 		<< "7- zakonc dzialanie programu " << endl;
 }
+float pobierzF() {
+	float fahr;
+	cout << "podaj farh: ";
+	cin >> fahr;
+	return fahr;
+}
+float K() {
+	float x;
+	cout << "podaj kelwiny: ";
+	cin >> x;
+	return x;
+}
+float C() {
+	float x;
+	cout << "podaj celsius ";
+	cin >> x;
+	return x;
+}
+
 
 int main() {
 	menu();
@@ -23,12 +45,10 @@ int main() {
 	cin >> wybor;
 	switch(wybor) {
 	case 1:
-		cout << "Przeliczanie Fahr na Celsius: " << endl;
-		float x, y;//x - fahr, y- celsius
-		for (x = 0.0; x <= 200; x = x + 20) {
-			y = FtoC(x);
-			cout << x << " -> " << y << endl;
-		}
+		float x, y;
+		x = pobierzF();
+		y = FtoC(x);
+		cout << x << " -> " << y << endl;
 		break;
 	case 2:
 		cout << "2-przelicz Fahr - > Kelwin: " << endl;
