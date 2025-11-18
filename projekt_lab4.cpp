@@ -9,8 +9,8 @@ float CtoK(float x);
 float KtoC(float x);
 float KtoF(float x);
 float pobierzF();
-float K();
-float C();
+float pobierzK();
+float pobierzC();
 void menu();
 void menu() {
 	cout << "1-przelicz Fahr -> Celsius " << endl << "2-przelicz Fahr - > Kelwin" << endl
@@ -24,13 +24,13 @@ float pobierzF() {
 	cin >> fahr;
 	return fahr;
 }
-float K() {
+float pobierzK() {
 	float x;
 	cout << "podaj kelwiny: ";
 	cin >> x;
 	return x;
 }
-float C() {
+float pobierzC() {
 	float x;
 	cout << "podaj celsius ";
 	cin >> x;
@@ -45,51 +45,47 @@ int main() {
 	cin >> wybor;
 	switch(wybor) {
 	case 1:
-		float x, y;
+		cout << "1-przeliczanie Fahr -> kelw: ";
+		float x, y;//x-fahr, y-cels
 		x = pobierzF();
 		y = FtoC(x);
-		cout << x << " -> " << y << endl;
+		cout << x << " fahr" << " -> " << y << " Celsius "<< endl;
 		break;
 	case 2:
-		cout << "2-przelicz Fahr - > Kelwin: " << endl;
+		cout << "2-przelicz Fahr -> Kelwin: " << endl;
 		float a,b;//a- fahr, b-kelwin
-		for (a = 0.0; a <= 200; a = a + 20) {
-			b = FtoK(a);
-			cout << a << " -> " << b << endl;
-		}
+		a = pobierzF();
+		b = FtoK(a);
+		cout << a << " fahr" << " -> " << b << " kelw" << endl;
 		break;
 	case 3:
 		cout << "przelicz Celsius -> Fahr: " << endl;
 		float c, d;//c-celsius, d-fahr
-		for (c = 0.0; c <= 200; c = c + 20) {
-			d = CtoF(c);
-			cout << c << " -> " << d << endl;
-		}
+		c = pobierzC();
+		d = CtoF(c);
+		cout << c << " celsius" << " -> " << d << " fahr" << endl;
 		break;
 	case 4:
 		cout << "4- przelicz celsius -> kelwin: " << endl;
 		float e,f ;//e-celsius, f-kelw
-		for (e = 0.0; e <= 200; e = e + 20) {
-			f = CtoK(e);
-			cout << e << " ->" << f << endl;
-		}
+		e = pobierzC();
+		f = CtoK(e);
+		cout << e << " celsius" << " -> " << f << " kelw" << endl;
 		break;
 	case 5:
 		cout << "5- przelicz Kelwin - > Celsius: " << endl;
 		float kelw, celsius;
-		for (kelw = 0.0; kelw <= 200; kelw = kelw + 20) {
-			celsius = KtoC(kelw);
-			cout << kelw << " -> " << celsius << endl;
-
-		}
+		kelw = pobierzK();
+		celsius = KtoC(kelw);
+		cout << kelw << " kelw" << " -> " << celsius << " celsius" << endl;
 		break;
 	case 6:
-		cout << "6 - przelicz Kelwin->Fahr" << endl;
+		cout << "6 - przelicz Kelwin -> Fahr: " << endl;
 		float g, fahr; //g-kelw
-		for (g = 0.0; g <= 200; g = g + 20) {
-			fahr = KtoF(g);
-			cout << g << " -> " << fahr << endl;
-		}
+		g = pobierzK();
+		fahr = KtoF(g);
+		cout << g << " kelw" << " -> " << fahr << " fahr" << endl;
+		break;
 
 	}
 	if (wybor > 6 or wybor < 1) {
