@@ -1,6 +1,8 @@
 ﻿
 
 #include <iostream>
+#include <stdlib.h>
+#include <string>
 using namespace std;
 float FtoC(float stopnie);
 float FtoK(float stopnie);
@@ -56,57 +58,103 @@ float pobierzC() {
 }
 
 int main() {
-	menu();
-	float temp;
-	float wynik;
-	int wybor;
-	int zbadaj;
-	cout << "wybierz ";
-	cin >> wybor;
-	
-	switch (wybor) {
-	case 1:
-		cout << "1-przeliczanie Fahr -> kelw: ";
-		temp = pobierzF();
-		zbadaj = check(temp, 'F');
-		if (zbadaj == -999.0) {
-			cout << "nie istnieje taka temperatura. ";
+	while (true) {
+		menu();
+		float temp;
+		float wynik;
+		int wybor;
+		int zbadaj;
+		cout << "wybierz ";
+		cin >> wybor;
 
-		}
-		else {
-			wynik = FtoC(temp);
-			cout << temp << "to " << wynik;
+		switch (wybor) {
+		case 1:
+			cout << "1-przeliczanie Fahr -> celsius: ";
+			temp = pobierzF();
+			zbadaj = check(temp, 'F');
+			if (zbadaj == -999.0) {
+				cout << "nie istnieje taka temperatura. ";
 
-		}
-		
-		break;
-	case 2:
-		cout << "2-przelicz Fahr -> Kelwin: " << endl;
-		temp = pobierzF();
-		zbadaj = check(temp, 'F');
-		if (zbadaj == -999.0) {
-			cout << "nie istnieje taka temperatura. ";
+			}
+			else {
+				wynik = FtoC(temp);
+				cout << temp << " stopni Fahr to " << wynik << " stopni celsiusa.";
 
-		}
-		else {
-			wynik = FtoK(temp);
-			cout << temp << "to " << wynik;
-		}
-		break;
-	case 3:
-		cout << "przelicz Celsius -> Fahr: " << endl;
-		temp = pobierzC();
-		zbadaj = check(temp, 'C');
-		if (zbadaj == -999.0) {
-			cout << "nie istnieje taka temperatura. ";
+			}
 
-		}
-		else {
-			wynik = CtoF(temp);
-			cout << temp << "to " << wynik;
-		}
+			break;
+		case 2:
+			cout << "2-przelicz Fahr -> Kelwin: " << endl;
+			temp = pobierzF();
+			zbadaj = check(temp, 'F');
+			if (zbadaj == -999.0) {
+				cout << "nie istnieje taka temperatura. ";
 
+			}
+			else {
+				wynik = FtoK(temp);
+				cout << temp << " stopni Fahr to " << wynik << " stopni Kelwina.";
+			}
+			break;
+		case 3:
+			cout << "przelicz Celsius -> Fahr: " << endl;
+			temp = pobierzC();
+			zbadaj = check(temp, 'C');
+			if (zbadaj == -999.0) {
+				cout << "nie istnieje taka temperatura. ";
 
+			}
+			else {
+				wynik = CtoF(temp);
+				cout << temp << " stopni celsiusa to " << wynik << " stopni Farh.";
+			}
+			break;
+		case 4:
+			cout << "4- przelicz celsius -> kelwin: " << endl;
+			temp = pobierzC();
+			zbadaj = check(temp, 'C');
+			if (zbadaj == -999.0) {
+				cout << "nie istnieje taka temperatura. ";
+
+			}
+			else {
+				wynik = CtoK(temp);
+				cout << temp << " stopni celsiusa to " << wynik << " stopni Kelwina.";
+			}
+			break;
+		case 5:
+			cout << "5- przelicz Kelwin - > Celsius: " << endl;
+			temp = pobierzK();
+			zbadaj = check(temp, 'K');
+			if (zbadaj == -999.0) {
+				cout << "nie istnieje taka temperatura. ";
+			}
+			else {
+				wynik = KtoC(temp);
+				cout << temp << " stopni kelwina to " << wynik << " stopni Celsiusa.";
+			}
+			break;
+		case 6:
+			cout << "6 - przelicz Kelwin -> Fahr: " << endl;
+			temp = pobierzK();
+			zbadaj = check(temp, 'K');
+			if (zbadaj == -999.0) {
+				cout << "nie istnieje taka temperatura. ";
+			}
+			else {
+				wynik = KtoF(temp);
+				cout << temp << " stopni Kelwina to " << wynik << " stopni Fahr.";
+			}
+			break;
+		}
+		if (wybor > 6 or wybor < 1) {
+			cout << "program zostaje wylączony ";
+			return 0;
+		}
+		cout << "wcisnij enter by zaczac od ponowanie.";
+		string enter;
+		getline(cin, enter);
+		system("cls");
 	}
 }
 
