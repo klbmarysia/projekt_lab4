@@ -69,6 +69,7 @@ int main() {
 
 		switch (wybor) {
 		case 1:
+			
 			cout << "1-przeliczanie Fahr -> celsius: ";
 			temp = pobierzF();
 			zbadaj = check(temp, 'F');
@@ -151,9 +152,11 @@ int main() {
 			cout << "program zostaje wylączony ";
 			return 0;
 		}
-		cout << "wcisnij enter by zaczac od ponowanie.";
+		cout << "wcisnij enter by rozpaczac ponownie.";
 		string enter;
+		cin.ignore();
 		getline(cin, enter);
+		
 		system("cls");
 	}
 }
