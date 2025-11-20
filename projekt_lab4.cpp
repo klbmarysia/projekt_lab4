@@ -20,6 +20,7 @@ char znak[100];
 int dataCounter = 0;
 
 
+
 int check(float temp, char stopnie) {
 	if (temp < 0 and stopnie == 'K') {
 		return -999;
@@ -174,12 +175,16 @@ int main() {
 		tab[dataCounter + 1] = wynik;
 		znak[dataCounter] = znak1;
 		znak[dataCounter+1] = znak2;
-		dataCounter = dataCounter + 2;
-		int linia = dataCounter / 2;
-		for (int i = 0; i <= linia; i= i +2) {
-			cout << tab[i]<<" " << znak[i]<<" " << tab[i + 1] <<" " << znak[i + 1]<<" " << endl;
+		
+		int n = 1;
+		
+		for (int i = 0; i <= dataCounter; i= i +2) {
+			
+			cout << "<" << n << "> " << tab[i] << " " << znak[i] << " = " << tab[i + 1] << " " << znak[i + 1] << endl;
+			n++;
 
 		}
+		dataCounter = dataCounter + 2;
 		cout << "wcisnij enter by rozpaczac ponownie.";
 		string enter;
 		cin.ignore();
