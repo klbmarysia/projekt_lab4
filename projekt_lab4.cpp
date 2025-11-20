@@ -12,6 +12,24 @@ float pobierzF();
 float pobierzK();
 float pobierzC();
 void menu();
+int check(float temp, char stopnie);
+
+int check(float temp, char stopnie) {
+	if (temp < 0 and stopnie == 'K') {
+		return -999;
+	}
+	else if (temp < -273.15 and stopnie == 'C') {
+		return -999;
+	}
+	else if (temp < -459.67 and stopnie == 'F') {
+		return -999;
+	}
+	else {
+		return 1;
+	}
+}
+
+
 void menu() {
 	cout << "1-przelicz Fahr -> Celsius " << endl << "2-przelicz Fahr - > Kelwin" << endl
 		<< "3-przelicz Celsius -> Fahr" << endl << "4- przelicz celsius -> kelwin " << endl
@@ -37,7 +55,63 @@ float pobierzC() {
 	return x;
 }
 
+int main() {
+	menu();
+	float temp;
+	float wynik;
+	int wybor;
+	int zbadaj;
+	cout << "wybierz ";
+	cin >> wybor;
+	
+	switch (wybor) {
+	case 1:
+		cout << "1-przeliczanie Fahr -> kelw: ";
+		temp = pobierzF();
+		zbadaj = check(temp, 'F');
+		if (zbadaj == -999.0) {
+			cout << "nie istnieje taka temperatura. ";
 
+		}
+		else {
+			wynik = FtoC(temp);
+			cout << temp << "to " << wynik;
+
+		}
+		
+		break;
+	case 2:
+		cout << "2-przelicz Fahr -> Kelwin: " << endl;
+		temp = pobierzF();
+		zbadaj = check(temp, 'F');
+		if (zbadaj == -999.0) {
+			cout << "nie istnieje taka temperatura. ";
+
+		}
+		else {
+			wynik = FtoK(temp);
+			cout << temp << "to " << wynik;
+		}
+		break;
+	case 3:
+		cout << "przelicz Celsius -> Fahr: " << endl;
+		temp = pobierzC();
+		zbadaj = check(temp, 'C');
+		if (zbadaj == -999.0) {
+			cout << "nie istnieje taka temperatura. ";
+
+		}
+		else {
+			wynik = CtoF(temp);
+			cout << temp << "to " << wynik;
+		}
+
+
+	}
+}
+
+
+/*
 int main() {
 	menu();
 	int wybor;
@@ -49,7 +123,8 @@ int main() {
 		float x, y;//x-fahr, y-cels
 		x = pobierzF();
 		y = FtoC(x);
-		cout << x << " fahr" << " -> " << y << " Celsius "<< endl;
+		cout << x << " fahr" << " -> " << y << " Celsius " << endl;
+				
 		break;
 	case 2:
 		cout << "2-przelicz Fahr -> Kelwin: " << endl;
@@ -94,10 +169,11 @@ int main() {
 	}
 	
 
+
 	
 }
 
-
+*/
 
 
 float FtoC(float stopnie) {
