@@ -168,7 +168,7 @@ int main() {
 			znak2 = 'F';
 			break;
 		case 7:
-			for (int i = 0; i <= dataCounter; i = i + 1) {
+			for (int i = 0; i <= dataCounter; i = i + 2) {
 
 				cout << "<" << n << "> " << tab[i] << " " << znak[i] << " = " << tab[i+1] << " " << znak[i+1] << endl;
 				n++;
