@@ -41,7 +41,7 @@ void menu() {
 	cout << "1-przelicz Fahr -> Celsius " << endl << "2-przelicz Fahr - > Kelwin" << endl
 		<< "3-przelicz Celsius -> Fahr" << endl << "4- przelicz celsius -> kelwin " << endl
 		<< "5- przelicz Kelwin - > Celsius " << endl << "6-przelicz Kelwin -> Fahr" << endl
-		<< "7- zakonc dzialanie programu " << endl;
+		<< "7- pokaż historie" << endl << "8- zakonc dzialanie programu " << endl;
 }
 float pobierzF() {
 	float fahr;
@@ -69,8 +69,10 @@ int main() {
 		float wynik = 0;
 		int wybor=0;
 		int zbadaj=0;
-		char znak1;
-		char znak2;
+		char znak1 = '\0';
+		char znak2 = '\0';
+		int n = 1;
+		
 		cout << "wybierz ";
 		cin >> wybor;
 
@@ -165,8 +167,15 @@ int main() {
 			znak1 = 'K';
 			znak2 = 'F';
 			break;
+		case 7:
+			for (int i = 0; i <= dataCounter; i = i + 1) {
+
+				cout << "<" << n << "> " << tab[i] << " " << znak[i] << " = " << tab[i+1] << " " << znak[i+1] << endl;
+				n++;
+
+			}
 		}
-		if (wybor > 6 or wybor < 1) {
+		if (wybor > 7 or wybor < 1) {
 			cout << "program zostaje wylączony " << endl;
 			return 0;
 		}
@@ -176,14 +185,15 @@ int main() {
 		znak[dataCounter] = znak1;
 		znak[dataCounter+1] = znak2;
 		
-		int n = 1;
 		
-		for (int i = 0; i <= dataCounter; i= i +2) {
+		
+		/*for (int i = 0; i <= dataCounter; i = i + 2) {
 			
 			cout << "<" << n << "> " << tab[i] << " " << znak[i] << " = " << tab[i + 1] << " " << znak[i + 1] << endl;
 			n++;
 
 		}
+		*/
 		dataCounter = dataCounter + 2;
 		cout << "wcisnij enter by rozpaczac ponownie.";
 		string enter;
