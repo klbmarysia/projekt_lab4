@@ -3,7 +3,13 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string>
+#include "headerFile.h"
+
 using namespace std;
+/*
+double tab[100][4];
+char znak[100][4];
+int dataCounter = 0;
 float FtoC(float stopnie);
 float FtoK(float stopnie);
 float CtoF(float x);
@@ -15,13 +21,10 @@ float pobierzK();
 float pobierzC();
 void menu();
 int check(float temp, char stopnie);
-double tab[100][4];
-char znak[100][4];
-int dataCounter = 0;
+/*
 
 
-
-int check(float temp, char stopnie) {
+/*int check(float temp, char stopnie) {
 	if (temp < 0 and stopnie == 'K') {
 		return -999;
 	}
@@ -61,6 +64,7 @@ float pobierzC() {
 	cin >> x;
 	return x;
 }
+*/
 
 int main() {
 	while (true) {
@@ -205,6 +209,7 @@ int main() {
 
 
 
+/*
 
 float FtoC(float stopnie) {
 	float wynik = (5.0 / 9.0) * (stopnie - 32.0);
@@ -230,8 +235,7 @@ float KtoF(float x) {
 	float wynik = x * 9.0 / 5.0 - 459.67;
 	return wynik;
 }
-
-
+*/
 
 
 
