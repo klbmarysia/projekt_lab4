@@ -15,8 +15,8 @@ float pobierzK();
 float pobierzC();
 void menu();
 int check(float temp, char stopnie);
-double tab[100];
-char znak[100];
+double tab[100][4];
+char znak[100][4];
 int dataCounter = 0;
 
 
@@ -72,6 +72,7 @@ int main() {
 		char znak1 = '\0';
 		char znak2 = '\0';
 		int n = 1;
+		int line = 1;
 		
 		cout << "wybierz ";
 		cin >> wybor;
@@ -168,32 +169,27 @@ int main() {
 			znak2 = 'F';
 			break;
 		case 7:
-			for (int i = 0; i <= dataCounter; i = i + 2) {
-
-				cout << "<" << n << "> " << tab[i] << " " << znak[i] << " = " << tab[i+1] << " " << znak[i+1] << endl;
-				n++;
+			for (int i = 0; i < dataCounter/2 ; i = i + 1) {
+				cout << "<" << i+1 << "> " << tab[i][0] << " " << znak[i][1] << " " << tab[i][2] << " " << znak[i][3] << endl;
+				
+				
 
 			}
+			return 0;
 		}
 		if (wybor > 7 or wybor < 1) {
 			cout << "program zostaje wylączony " << endl;
 			return 0;
 		}
 		
-		tab[dataCounter] = temp;
-		tab[dataCounter + 1] = wynik;
-		znak[dataCounter] = znak1;
-		znak[dataCounter+1] = znak2;
+		tab[dataCounter/2][0] = temp;
+		tab[dataCounter/2][2] = wynik;
+		znak[dataCounter/2][1] = znak1;
+		znak[dataCounter/2][3] = znak2;
 		
 		
 		
-		/*for (int i = 0; i <= dataCounter; i = i + 2) {
-			
-			cout << "<" << n << "> " << tab[i] << " " << znak[i] << " = " << tab[i + 1] << " " << znak[i + 1] << endl;
-			n++;
-
-		}
-		*/
+		
 		dataCounter = dataCounter + 2;
 		cout << "wcisnij enter by rozpaczac ponownie.";
 		string enter;
