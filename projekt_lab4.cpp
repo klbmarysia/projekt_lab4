@@ -5,7 +5,7 @@
 #include <string>
 #include "headerFile.h"
 
-using namespace std;
+using namespace std ;
 
 
 

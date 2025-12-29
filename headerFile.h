@@ -11,7 +11,7 @@ float FtoC(float stopnie);
 float FtoK(float stopnie);
 float CtoF(float x);
 float CtoK(float x);
-float KtoC(float x);
+float KtoC(float x) ;
 float KtoF(float x);
 float pobierzF();
 float pobierzK();
