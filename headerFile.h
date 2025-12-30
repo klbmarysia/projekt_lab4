@@ -19,12 +19,61 @@ float pobierzC();
 void menu();
 int check(float temp, char stopnie);
 void menu2();
+int historia();
+
 
 void menu2() {
-	cout << "1. Tylko C - > inne" << endl << "2. Tylko F -> inne" << endl << "3. Tylko K -> inne" << endl << " 4. cala historia" << ednl;
+	cout << "1. Tylko C - > inne" << endl << "2. Tylko F -> inne" << endl << "3. Tylko K -> inne" << endl << " 4. cala historia" << endl;
 }
 
-int check(float temp, char stopnie) {
+int historia() {
+	int x = 0;
+	cout << "Podaj numer: ";
+	cin >> x;
+	if (x < 1 || x > 4) {
+		cout << "Nie ma takiej opcji. ";
+		return 0;
+	}
+	else if (x == 1) {
+		for (int i = 0; i < dataCounter / 2; i = i + 1) {
+			if (znak[i][1] == 'C') {
+				cout << "<" << i + 1 << "> " << tab[i][0] << " " << znak[i][1] << " " << tab[i][2] << " " << znak[i][3] << endl;
+			}
+			else {
+				return 0;
+			}
+		}
+	}
+	else if (x == 2) {
+		for (int i = 0; i < dataCounter / 2; i = i + 1) {
+			if (znak[i][1] == 'F') {
+				cout << "<" << i + 1 << "> " << tab[i][0] << " " << znak[i][1] << " " << tab[i][2] << " " << znak[i][3] << endl;
+			}
+			else {
+				return 0;
+			}
+		}
+	}
+	else if (x == 3) {
+		for (int i = 0; i < dataCounter / 2; i = i + 1) {
+			if (znak[i][1] == 'K') {
+				cout << "<" << i + 1 << "> " << tab[i][0] << " " << znak[i][1] << " " << tab[i][2] << " " << znak[i][3] << endl;
+			}
+			else {
+				return 0;
+			}
+
+
+		}
+	}
+	else if (x == 4) {
+		for (int i = 0; i < dataCounter / 2; i = i + 1) {
+			cout << "<" << i + 1 << "> " << tab[i][0] << " " << znak[i][1] << " " << tab[i][2] << " " << znak[i][3] << endl;
+		}
+	}
+}
+
+	int check(float temp, char stopnie) {
 	if (temp < 0 and stopnie == 'K') {
 		return -999;
 	}
@@ -57,7 +106,7 @@ float pobierzK() {
 	cin >> x;
 	return x;
 }
-float pobierzC() {
+ float pobierzC() {
 	float x;
 	cout << "podaj celsius ";
 	cin >> x;
