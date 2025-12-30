@@ -86,7 +86,7 @@ int main() {
 				cout << temp << " stopni celsiusa to " << wynik << " stopni Kelwina."<< endl;
 			}
 			znak1 = 'C';
-			znak2 = 'K';
+			znak2 =  'K';
 			break;
 		case 5:
 			cout << "5- przelicz Kelwin - > Celsius: " << endl;
