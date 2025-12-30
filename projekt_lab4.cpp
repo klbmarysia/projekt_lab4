@@ -117,12 +117,9 @@ int main() {
 			znak2 = 'F';
 			break;
 		case 7:
-			for (int i = 0; i < dataCounter/2 ; i = i + 1) {
-				cout << "<" << i+1 << "> " << tab[i][0] << " " << znak[i][1] << " " << tab[i][2] << " " << znak[i][3] << endl;
-				
-				
-
-			}
+			menu2();
+			historia();
+		
 			return 0;
 		}
 		if (wybor > 7 or wybor < 1) {
