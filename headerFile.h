@@ -30,7 +30,7 @@ int check(float temp, char stopnie) {
 		return -999;
 	}
 	else {
-		return 1;
+		return  1;
 	}
 }
 
