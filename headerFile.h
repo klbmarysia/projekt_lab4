@@ -20,13 +20,13 @@ void menu();
 int check(float temp, char stopnie);
 
 int check(float temp, char stopnie) {
-	if (temp < 0 and stopnie == 'K') {
+	if (temp < 0 && stopnie == 'K') {
 		return -999;
 	}
-	else if (temp < -273.15 and stopnie == 'C') {
+	else if (temp < -273.15 && stopnie == 'C') {
 		return -999;
 	}
-	else if (temp < -459.67 and stopnie == 'F') {
+	else if (temp < -459.67 && stopnie == 'F') {
 		return -999;
 	}
 	else {
@@ -81,7 +81,7 @@ float KtoC(float x) {
 	return wynik;
 }
 float KtoF(float x) {
-	float wynik = x * 9.0 / 5.0 - 459.67;
+	float  wynik = x * 9.0 / 5.0 - 459.67;
 	return wynik;
 }
 

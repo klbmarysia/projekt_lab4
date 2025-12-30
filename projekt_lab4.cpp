@@ -22,7 +22,7 @@ int main() {
 		int n = 1;
 		int line = 1;
 		
-		cout << "wybierz ";
+		cout <<  "wybierz ";
 		cin >> wybor;
 
 		switch (wybor) {
@@ -125,7 +125,7 @@ int main() {
 			}
 			return 0;
 		}
-		if (wybor > 7 or wybor < 1) {
+		if (wybor > 7 || wybor < 1) {
 			cout << "program zostaje wylączony " << endl;
 			return 0;
 		}
