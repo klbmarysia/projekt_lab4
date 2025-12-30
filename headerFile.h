@@ -18,6 +18,11 @@ float pobierzK();
 float pobierzC();
 void menu();
 int check(float temp, char stopnie);
+void menu2();
+
+void menu2() {
+	cout << "1. Tylko C - > inne" << endl << "2. Tylko F -> inne" << endl << "3. Tylko K -> inne" << endl << " 4. cala historia" << ednl;
+}
 
 int check(float temp, char stopnie) {
 	if (temp < 0 and stopnie == 'K') {
@@ -34,7 +39,7 @@ int check(float temp, char stopnie) {
 	}
 }
 
-void menu( ) {
+void menu() {
 	cout << "1-przelicz Fahr -> Celsius " << endl << "2-przelicz Fahr - > Kelwin" << endl
 		<< "3-przelicz Celsius -> Fahr" << endl << "4- przelicz celsius -> kelwin " << endl
 		<< "5- przelicz Kelwin - > Celsius " << endl << "6-przelicz Kelwin -> Fahr" << endl
