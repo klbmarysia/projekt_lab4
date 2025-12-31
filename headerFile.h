@@ -39,6 +39,10 @@ int historia() {
 			if (znak[i][1] == 'C') {
 				cout << "<" << i + 1 << "> " << tab[i][0] << " " << znak[i][1] << " " << tab[i][2] << " " << znak[i][3] << endl;
 			}
+			else if (znak[i][1] = !'C') {
+				cout << "Brak danych";
+			}
+			
 			else {
 				return 0;
 			}
