@@ -118,8 +118,13 @@ int main() {
 			break;
 		case 7:
 			menu2();
-			historia();
-		
+			if (historia() == 2) {
+				cout << "brak danych";
+			}
+			else {
+				historia();
+			}
+			
 			return 0;
 		}
 		if (wybor > 7 or wybor < 1) {
@@ -127,10 +132,17 @@ int main() {
 			return 0;
 		}
 		
-		tab[dataCounter/2][0] = temp;
-		tab[dataCounter/2][2] = wynik;
-		znak[dataCounter/2][1] = znak1;
-		znak[dataCounter/2][3] = znak2;
+		if (dataCounter <= 4) {
+			tab[dataCounter / 2][0] = temp;
+			tab[dataCounter / 2][2] = wynik;
+			znak[dataCounter / 2][1] = znak1;
+			znak[dataCounter / 2][3] = znak2;
+		}
+		else {
+			cout << "Dane nie zostają zapisane!"<< endl;
+
+		}
+		
 		
 		
 		

@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <string>
 using namespace std;
-double tab[100][4];
-char znak[100][4];
+double tab[8][4];
+char znak[8][4];
 int dataCounter = 0;
 
 float FtoC(float stopnie);
@@ -20,6 +20,10 @@ void menu();
 int check(float temp, char stopnie);
 void menu2();
 int historia();
+
+
+
+
 
 
 void menu2() {
@@ -38,9 +42,11 @@ int historia() {
 		for (int i = 0; i < dataCounter / 2; i = i + 1) {
 			if (znak[i][1] == 'C') {
 				cout << "<" << i + 1 << "> " << tab[i][0] << " " << znak[i][1] << " " << tab[i][2] << " " << znak[i][3] << endl;
+				
 			}
 			else if (znak[i][1] != 'C') {
-				cout << "Brak danych";
+				//cout << "Brak danych.";
+				return 2;
 			}
 			
 			else {
@@ -52,6 +58,11 @@ int historia() {
 		for (int i = 0; i < dataCounter / 2; i = i + 1) {
 			if (znak[i][1] == 'F') {
 				cout << "<" << i + 1 << "> " << tab[i][0] << " " << znak[i][1] << " " << tab[i][2] << " " << znak[i][3] << endl;
+				
+			}
+			else if (znak[i][1] != 'F') {
+				//cout << "Brak danych.";
+				return 2;
 			}
 			else {
 				return 0;
@@ -62,6 +73,11 @@ int historia() {
 		for (int i = 0; i < dataCounter / 2; i = i + 1) {
 			if (znak[i][1] == 'K') {
 				cout << "<" << i + 1 << "> " << tab[i][0] << " " << znak[i][1] << " " << tab[i][2] << " " << znak[i][3] << endl;
+				
+			}
+			else if (znak[i][1] != 'K') {
+				//cout << "Brak danych.";
+				return 2;
 			}
 			else {
 				return 0;
