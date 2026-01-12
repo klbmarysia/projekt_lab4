@@ -12,6 +12,9 @@ using namespace std ;
 
 int main() {
 	while (true) {
+		if (dataCounter >= 50) {
+			cout << "przeliczenia od teraz nie beda zapisywane!"<< endl;
+		}
 		menu();
 		float temp=0;
 		float wynik = 0;
@@ -118,36 +121,55 @@ int main() {
 			break;
 		case 7:
 			menu2();
-			if (historia() == 2) {
-				cout << "brak danych";
-			}
-			else {
-				historia();
-			}
+			historia();
+			break;
+		case 8:
+			system("cls");
+			historiacala();
+			usuwanie();
+			historiacala();
+			break;
+		case 9:
+			system("cls");
+			historiacala();
+			edit();
+			menu2();
+			historia();
+		case 10:
+			los();
+			string gl;
+			getline(cin, gl);
+			historiacala();
 			
-			return 0;
+
+
+
 		}
-		if (wybor > 7 or wybor < 1) {
+		if (wybor > 10 or wybor < 1) {
 			cout << "program zostaje wylączony " << endl;
 			return 0;
 		}
 		
-		if (dataCounter <= 4) {
-			tab[dataCounter / 2][0] = temp;
+		
+
+
+			/*tab[dataCounter / 2][0] = temp;
 			tab[dataCounter / 2][2] = wynik;
 			znak[dataCounter / 2][1] = znak1;
 			znak[dataCounter / 2][3] = znak2;
+			*/
+		
+		
+		
+		if (dataCounter < 50 && (wybor >= 1 || wybor < 11)) {
+			tab[dataCounter][0] = temp;
+			tab[dataCounter][2] = wynik;
+			znak[dataCounter][1] = znak1;
+			znak[dataCounter][3] = znak2;
+			dataCounter = dataCounter + 1;
 		}
-		else {
-			cout << "Dane nie zostają zapisane!"<< endl;
-
-		}
 		
 		
-		
-		
-		
-		dataCounter = dataCounter + 2;
 		cout << "wcisnij enter by rozpaczac ponownie.";
 		string enter;
 		cin.ignore();
