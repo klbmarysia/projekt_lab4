@@ -27,6 +27,16 @@ int historiacala();
 int edit();
 int los();
 int funkcjalos(int x);
+int nieliczba();
+
+int nieliczba() {
+	cin.clear();
+	cin.ignore(1000, '\n');
+	cout << "to nie jest liczba";
+	string d;
+	getline(cin, d);
+	return 1;
+}
 
 
 int funkcjalos(int x) {
@@ -101,25 +111,37 @@ int funkcjalos(int x) {
 
 int los() {
 	int wartosc = 0;
-	string decyzja; 
+	int decyzja = 0; 
 	cout << "Ile losowych wartosci przeliczyc? ";
 	cin >> wartosc;
-	if (dataCounter * 2 + wartosc * 2 > 50) {
+	if (cin.fail() ){
+		cin.clear();
+		cin.ignore(1000, '\n');
+		cout << "to nie jest liczba";
+		string d;
+		getline(cin, d);
+		return 1;
+
+	}
+	else if (dataCounter * 2 + wartosc * 2 > 100) {
 		cout << "Liczba losow wychodzi po za zakres tablicy," << endl
-			<< "czy wygenerowaæ tyle losow ile zostalo miejsca(napisz 'tak' - jesli chcesz lub 'nie' - jesli nie.): ";
-		getline(cin, decyzja);
-		if (decyzja == "nie") {
+			<< "czy wygenerowaæ tyle losow ile zostalo miejsca(napisz '1' - jesli chcesz lub '0' - jesli nie.): ";
+		cin >> decyzja;
+		if (decyzja == 0) {
 			return 5;
 		}
-		else if (decyzja == "tak") {
-			wartosc = 50 - dataCounter * 2;
+		else if  (decyzja == 1){
+			wartosc = 50 - dataCounter;
 			funkcjalos(wartosc);
+			return 1;
 		}
 	
 
 	}
+	
 	else {
 		funkcjalos(wartosc);
+		return 1;
 	}
 }
 

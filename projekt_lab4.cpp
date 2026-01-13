@@ -161,7 +161,7 @@ int main() {
 		
 		
 		
-		if (dataCounter < 50 && (wybor >= 1 || wybor < 11)) {
+		if (dataCounter < 50 && wybor >= 1 && wybor < 7) {
 			tab[dataCounter][0] = temp;
 			tab[dataCounter][2] = wynik;
 			znak[dataCounter][1] = znak1;
