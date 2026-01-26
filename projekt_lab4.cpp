@@ -11,7 +11,9 @@ using namespace std ;
 
 
 int main() {
+	
 	while (true) {
+		
 		if (dataCounter >= 50) {
 			cout << "przeliczenia od teraz nie beda zapisywane!"<< endl;
 		}
@@ -27,13 +29,32 @@ int main() {
 		
 		cout << "wybierz ";
 		cin >> wybor;
+		if (cin.fail()) {
+			cin.clear();
+			cout << "to nie jest liczba, wcisnij eter by rozpaczac ponownie :)";
+			string d;
+			getline(cin, d);
+			cin.ignore();
+			system("cls");
+			continue;
+		}
 
 		switch (wybor) {
 		case 1:
 			
 			cout << "1-przeliczanie Fahr -> celsius: " << endl;
 			temp = pobierzF();
+			if (conversionFailed) {
+				cout << "Nie prawidlowa wartosc, wcisnij enter by rozpoczac ponownie"<< endl;
+				string lol;
+				getline(cin, lol);
+				cin.ignore();
+				system("cls");
+				conversionFailed = false;
+				continue;
+			}
 			zbadaj = check(temp, 'F');
+			
 			if (zbadaj == -999.0) {
 				cout << "nie istnieje taka temperatura. " << endl;
 
@@ -49,7 +70,17 @@ int main() {
 		case 2:
 			cout << "2-przelicz Fahr -> Kelwin: " << endl;
 			temp = pobierzF();
+			if (conversionFailed) {
+				cout << "Nie prawidlowa wartosc, wcisnij enter by rozpoczac ponownie" << endl;
+				string lol;
+				getline(cin, lol);
+				cin.ignore();
+				system("cls");
+				conversionFailed = false;
+				continue;
+			}
 			zbadaj = check(temp, 'F');
+
 			if (zbadaj == -999.0) {
 				cout << "nie istnieje taka temperatura. " << endl;
 
@@ -64,6 +95,15 @@ int main() {
 		case 3:
 			cout << "przelicz Celsius -> Fahr: " << endl;
 			temp = pobierzC();
+			if (conversionFailed) {
+				cout << "Nie prawidlowa wartosc, wcisnij enter by rozpoczac ponownie" << endl;
+				string lol;
+				getline(cin, lol);
+				cin.ignore();
+				system("cls");
+				conversionFailed = false;
+				continue;
+			}
 			zbadaj = check(temp, 'C');
 			if (zbadaj == -999.0) {
 				cout << "nie istnieje taka temperatura. " << endl;
@@ -79,6 +119,15 @@ int main() {
 		case 4:
 			cout << "4- przelicz celsius -> kelwin: " << endl;
 			temp = pobierzC();
+			if (conversionFailed) {
+				cout << "Nie prawidlowa wartosc, wcisnij enter by rozpoczac ponownie" << endl;
+				string lol;
+				getline(cin, lol);
+				cin.ignore();
+				system("cls");
+				conversionFailed = false;
+				continue;
+			}
 			zbadaj = check(temp, 'C');
 			if (zbadaj == -999.0) {
 				cout << "nie istnieje taka temperatura. "<<endl;
@@ -94,6 +143,15 @@ int main() {
 		case 5:
 			cout << "5- przelicz Kelwin - > Celsius: " << endl;
 			temp = pobierzK();
+			if (conversionFailed) {
+				cout << "Nie prawidlowa wartosc, wcisnij enter by rozpoczac ponownie" << endl;
+				string lol;
+				getline(cin, lol);
+				cin.ignore();
+				system("cls");
+				conversionFailed = false;
+				continue;
+			}
 			zbadaj = check(temp, 'K');
 			if (zbadaj == -999.0) {
 				cout << "nie istnieje taka temperatura. "<< endl;
@@ -108,6 +166,15 @@ int main() {
 		case 6:
 			cout << "6 - przelicz Kelwin -> Fahr: " << endl;
 			temp = pobierzK();
+			if (conversionFailed) {
+				cout << "Nie prawidlowa wartosc, wcisnij enter by rozpoczac ponownie" << endl;
+				string lol;
+				getline(cin, lol);
+				cin.ignore();
+				system("cls");
+				conversionFailed = false;
+				continue;
+			}
 			zbadaj = check(temp, 'K');
 			if (zbadaj == -999.0) {
 				cout << "nie istnieje taka temperatura. " << endl;;
@@ -122,23 +189,71 @@ int main() {
 		case 7:
 			menu2();
 			historia();
+			if (conversionFailed) {
+				cout << "Nie prawidlowa wartosc, wcisnij enter by rozpoczac ponownie" << endl;
+				string lol;
+				getline(cin, lol);
+				cin.ignore();
+				system("cls");
+				conversionFailed = false;
+				continue;
+			}
 			break;
 		case 8:
-			system("cls");
-			historiacala();
-			usuwanie();
-			historiacala();
+			if (dataCounter > 0) {
+
+
+				system("cls");
+				historiacala();
+				usuwanie();
+				if (conversionFailed) {
+					cout << "Nie prawidlowa wartosc, wcisnij enter by rozpoczac ponownie" << endl;
+					string lol;
+					getline(cin, lol);
+					cin.ignore();
+					system("cls");
+					conversionFailed = false;
+					continue;
+				}
+				historiacala();
+			}
+			else {
+				cout << "Nie mozesz usunac nic z historii, bo jej nie masz :)" << endl;
+				string d;
+				getline(cin, d);
+				cin.ignore();
+				system("cls");
+				continue;
+			}
 			break;
 		case 9:
-			system("cls");
-			historiacala();
-			edit();
-			menu2();
-			historia();
+			if (dataCounter > 0) {
+				system("cls");
+				historiacala();
+
+				edit();
+				if (conversionFailed) {
+					cout << "Blad, wcisnij enter by rozpoczac ponownie" << endl;
+					string lol;
+					getline(cin, lol);
+					cin.ignore();
+					system("cls");
+					conversionFailed = false;
+					continue;
+				}
+			}
+			else {
+				cout << "nie mozesz edytowac historii, bo jej nie masz." << endl;
+				string d;
+				getline(cin, d);
+				cin.ignore();
+				system("cls");
+				continue;
+			}
+
 		case 10:
 			los();
-			string gl;
-			getline(cin, gl);
+			
 			historiacala();
 			
 
@@ -153,12 +268,7 @@ int main() {
 		
 
 
-			/*tab[dataCounter / 2][0] = temp;
-			tab[dataCounter / 2][2] = wynik;
-			znak[dataCounter / 2][1] = znak1;
-			znak[dataCounter / 2][3] = znak2;
-			*/
-		
+			
 		
 		
 		if (dataCounter < 50 && wybor >= 1 && wybor < 7) {

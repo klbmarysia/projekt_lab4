@@ -27,16 +27,50 @@ int historiacala();
 int edit();
 int los();
 int funkcjalos(int x);
-int nieliczba();
 
-int nieliczba() {
-	cin.clear();
-	cin.ignore(1000, '\n');
-	cout << "to nie jest liczba";
-	string d;
-	getline(cin, d);
-	return 1;
+
+
+
+
+
+
+
+bool conversionFailed = false;
+int convertToInteger(const char vector[], int size);
+
+int convertToInteger(const char vector[], int size) {
+	int result = 0;
+	bool isNegative = false;
+	for (int i = 0; i < size; i ++) {
+		if (vector[i] == '\0') {
+			break;
+		}
+		if (isdigit(vector[i])) {
+			result = result * 10 + (vector[i] - '0');
+
+		}
+		else if (vector[i] == '-' && i == 0) {
+			isNegative = true;
+		}
+		else if (vector[i] == '+' && i == 0) {
+			continue;
+		}
+		else {
+			if (conversionFailed == false) {
+				conversionFailed = true;
+			}
+		}
+
+	}
+	if (isNegative) {
+		return -result;
+
+	}
+	else {
+		return result;
+	}
 }
+
 
 
 int funkcjalos(int x) {
@@ -113,15 +147,15 @@ int los() {
 	int wartosc = 0;
 	int decyzja = 0; 
 	cout << "Ile losowych wartosci przeliczyc? ";
+
+
 	cin >> wartosc;
-	if (cin.fail() ){
+	if (cin.fail()) {
 		cin.clear();
-		cin.ignore(1000, '\n');
-		cout << "to nie jest liczba";
 		string d;
 		getline(cin, d);
+		conversionFailed = true;
 		return 1;
-
 	}
 	else if (dataCounter * 2 + wartosc * 2 > 100) {
 		cout << "Liczba losow wychodzi po za zakres tablicy," << endl
@@ -157,13 +191,41 @@ int edit() {
 	
 	cout << "Podaj wiersz, ktory chcesz zedytowac: ";
 	cin >> edit;
+	if (cin.fail()) {
+		cin.clear();
+		string d;
+		getline(cin, d);
+		conversionFailed = true;
+		return -1;
+	}
 	cout << "Podaj nowa temperature: ";
 	cin >> nowaTemp;
+	if (cin.fail()) {
+		cin.clear();
+		string d;
+		getline(cin, d);
+		conversionFailed = true;
+		return -1;
+	}
 	cout << "Podaj jednostke(podaj F, C lub K): ";
 	cin >> jednostka;
+	if (cin.fail()) {
+		cin.clear();
+		string d;
+		getline(cin, d);
+		conversionFailed = true;
+		return -1;
+	}
 	cout << "Podaj na co chcesz przeliczyc(podaj F, C lub K): ";
 	cin >> jednostka2;
-	if (jednostka == 'F' && jednostka2 == 'C') {
+	if (cin.fail()) {
+		cin.clear();
+		string d;
+		getline(cin, d);
+		conversionFailed = true;
+		return -1;
+	}
+	if ((jednostka == 'F'|| jednostka == 'f') && (jednostka2 == 'C'|| jednostka2 == 'c')) {
 		
 		zbadaj = check(nowaTemp, 'F');
 		if (zbadaj == -999.0) {
@@ -182,7 +244,7 @@ int edit() {
 		return 1;
 		
 	}
-	else if (jednostka == 'F' && jednostka2 == 'K') {
+	else if ((jednostka == 'F' || jednostka == 'f') && (jednostka2 == 'K' || jednostka2 == 'c')) {
 		zbadaj = check(nowaTemp, 'F');
 		if (zbadaj == -999.0) {
 			cout << "Nie istnieje taka temperatura. " << endl;
@@ -197,7 +259,7 @@ int edit() {
 		znak[edit - 1][3] = 'K';
 		return 1;
 	}
-	else if (jednostka == 'C' && jednostka2 == 'F') {
+	else if ((jednostka == 'C' || jednostka == 'c') && (jednostka2 == 'F' || jednostka2 == 'f')) {
 		zbadaj = check(nowaTemp, 'C');
 		if (zbadaj == -999.0) {
 			cout << "Nie istnieje taka temperatura. " << endl;
@@ -212,7 +274,7 @@ int edit() {
 		znak[edit - 1][3] = 'F';
 		return 1;
 	}
-	else if (jednostka == 'C' && jednostka2 == 'K') {
+	else if ((jednostka == 'C'|| jednostka =='c') && (jednostka2 == 'K' ||jednostka2 == 'k')) {
 		zbadaj = check(nowaTemp, 'C');
 		if (zbadaj == -999.0) {
 			cout << "Nie istnieje taka temperatura. " << endl;
@@ -228,7 +290,7 @@ int edit() {
 		return 1;
 
 	}
-	else if (jednostka == 'K' && jednostka2 == 'C') {
+	else if ((jednostka == 'K'|| jednostka =='k') && (jednostka2 == 'C'|| jednostka2 == 'c')) {
 		zbadaj = check(nowaTemp, 'K');
 		if (zbadaj == -999.0) {
 			cout << "Nie istnieje taka temperatura. " << endl;
@@ -243,7 +305,7 @@ int edit() {
 		znak[edit - 1][3] = 'C';
 		return 1;
 	}
-	else if (jednostka == 'K' && jednostka2 == 'F') {
+	else if ((jednostka == 'K'|| jednostka == 'k') && (jednostka2 == 'F'|| jednostka2 =='f')) {
 		zbadaj = check(nowaTemp, 'K');
 		if (zbadaj == -999.0) {
 			cout << "Nie istnieje taka temperatura. " << endl;
@@ -258,6 +320,10 @@ int edit() {
 		znak[edit - 1][3] = 'F';
 		return 1;
 	}
+	else {
+		 cout << "zostaly podane zle znaki, historia nie zostala zmieniona!"<< endl;
+		 conversionFailed = true;
+	 }
 	
 
 }
@@ -283,8 +349,28 @@ int historiacala() {
 int usuwanie() {
 	int entityToRemove = 0;
 	cout << "Podaj ktora linijke chcesz usunac: ";
-	cin >> entityToRemove; // entitytoremove*2 - 2 i entitytoremove*2- 1 -> indeksy do usuniêcia
-	for (int i = entityToRemove -1  ; i <= dataCounter ; i++) {
+	cin >> entityToRemove;// entitytoremove*2 - 2 i entitytoremove*2- 1 -> indeksy do usuniêcia
+	
+	if (cin.fail()) {
+		cin.clear();
+		string d;
+		getline(cin, d);
+		conversionFailed = true;
+		return 1;
+	}
+	else {
+		for (int i = entityToRemove - 1; i <= dataCounter; i++) {
+			tab[i][0] = tab[i + 1][0];
+			znak[i][1] = znak[i + 1][1];
+			tab[i][2] = tab[i + 1][2];
+			znak[i][3] = znak[i + 1][3];
+		}
+		dataCounter -= 1;
+		return 1;
+	}
+
+	
+	/*for (int i = entityToRemove - 1; i <= dataCounter; i++) {
 		tab[i][0] = tab[i+1][0];
 		znak[i][1] = znak[i + 1][1];
 		tab[i][2] = tab[i + 1][2];
@@ -292,7 +378,7 @@ int usuwanie() {
 	}
 	dataCounter -= 1;
 	return 1;
-
+	*/
 }
 
 
@@ -308,6 +394,14 @@ int historia() {
 	int x = 0;
 	cout << "Podaj numer: ";
 	cin >> x;
+
+	if (cin.fail()) {
+		cin.clear();
+		string d;
+		getline(cin, d);
+		conversionFailed = true;
+		return 1;
+	}
 	if (x < 1 || x > 4) {
 		cout << "Nie ma takiej opcji. ";
 		return 0;
@@ -401,19 +495,55 @@ float pobierzF() {
 	float fahr;
 	cout << "podaj farh: ";
 	cin >> fahr;
-	return fahr;
+	
+	if(cin.fail()) {
+		cin.clear();
+		
+		string d;
+		getline(cin, d);
+		
+		conversionFailed = true;
+		return 0;
+	}
+	
+	else {
+		return fahr;
+	}
 }
 float pobierzK() {
 	float x;
 	cout << "podaj kelwiny: ";
 	cin >> x;
-	return x;
+	if (cin.fail()) {
+		cin.clear();
+		cout << "to nie jest liczba";
+		string d;
+		getline(cin, d);
+		conversionFailed = true;
+		return 0;
+
+		
+	}
+	else {
+		return x;
+	}
+	
 }
  float pobierzC() {
 	float x;
 	cout << "podaj celsius ";
 	cin >> x;
-	return x;
+	if (cin.fail()) {
+		cin.clear();
+		cout << "to nie jest liczba";
+		string d;
+		getline(cin, d);
+		conversionFailed = true;
+		return 0;
+	}
+	else {
+		return x;
+	}
 }
 
 
